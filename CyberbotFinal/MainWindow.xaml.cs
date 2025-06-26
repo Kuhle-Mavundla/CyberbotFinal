@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
+using CyberbotFinal.Pages;
 
 namespace CyberbotFinal
 // Ensure the MainWindow.xaml file exists in your project and is properly linked to this code-behind file.  
@@ -45,6 +46,25 @@ namespace CyberbotFinal
                 AddToChat("CyberBot: Like I have mentioned, my name is CyberBot and I am your digital assistant for cybersecurity.");
                 AddToChat("CyberBot: What is your name?");
             });
+        }
+            private void GoToTask_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new TaskAssistantPage());
+        }
+
+        private void GoToTips_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new CyberTipsPage());
+        }
+
+        private void GoToQuiz_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new QuizPage());
+        }
+
+        private void GoToMainChat_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = null;
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
