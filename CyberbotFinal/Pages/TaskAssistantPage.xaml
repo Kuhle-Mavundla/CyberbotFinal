@@ -8,12 +8,24 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TaskAssistantPage">
 
-    <Grid Background="DarkSlateGray">
-        <StackPanel Margin="20">
-            <TextBlock Text="Set a Cybersecurity Reminder" FontSize="24" Foreground="White" Margin="0,0,0,20"/>
-            <TextBox x:Name="ReminderInput" Height="30" Width="400" Margin="0,0,0,10" Text="Enter your task reminder..."/>
-            <Button Content="Add Reminder" Width="120" Click="AddReminder_Click"/>
-            <ListBox x:Name="ReminderList" Height="200" Margin="0,20,0,0" />
-        </StackPanel>
-    </Grid>
-</Page>
+        <Grid Background="DarkSlateGray">
+            <StackPanel Margin="20">
+                <TextBlock Text="Cybersecurity Task Reminders" FontSize="24" Foreground="White" Margin="0,0,0,20"/>
+
+                <TextBox x:Name="ReminderInput" Height="30" Width="400" Margin="0,0,0,10" Text="Enter your task..." />
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Reminder Time:" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <DatePicker x:Name="DatePicker" Width="120" />
+                    <TextBox x:Name="TimeInput" Width="80" Height="25" Margin="10,0,0,0" Text="14:30"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Button Content="Add Reminder" Width="120" Click="AddReminder_Click" Margin="0,0,10,0"/>
+                    <Button Content="Update Reminder" Width="120" Click="UpdateReminder_Click" Margin="0,0,10,0"/>
+                    <Button Content="Delete Reminder" Width="120" Click="DeleteReminder_Click"/>
+                </StackPanel>
+
+                <ListBox x:Name="ReminderList" Height="200" SelectionChanged="ReminderList_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
+    </Page>

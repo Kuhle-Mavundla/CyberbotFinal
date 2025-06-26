@@ -39,6 +39,14 @@ namespace CyberbotFinal
         public MainWindow()
         {
             InitializeComponent();
+            AsciiHeader.Text = @"
+   ______     __  __ _____     _____     ______      _____    _____    _________
+  /\  ___\   /\ \/ / \ == \   /\  ___\  /\  == \     \ == \  /     \  /\__    __\
+  \ \ \____  \ \  /   \  /___ \ \  ___\ \ \  __<      \   /__\      \ \/__\   \_/
+   \ \_____\  \ \_\    \  == \ \ \_____\ \ \_\ \_\     \  == \\      \     \   \
+    \/_____/   \/_/     \____/  \/_____/  \/_/ /_/      \____/ \_____/      \___\
+";
+
             PlayGreetingAudio("cyber_greeting.wav");
 
             Dispatcher.InvokeAsync(() =>

@@ -27,6 +27,16 @@
 
             <!-- Page Display Area -->
             <Frame x:Name="MainFrame" Margin="10,50,10,10" NavigationUIVisibility="Hidden"/>
+            <TextBlock x:Name="AsciiHeader"
+           TextWrapping="Wrap"
+           FontFamily="Consolas"
+           FontSize="14"
+           Foreground="Lime"
+           Margin="10"
+           VerticalAlignment="Top"
+           HorizontalAlignment="Center"
+           TextAlignment="Center" />
+
         </StackPanel>
     </Grid>
 </Window>
