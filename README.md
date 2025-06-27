@@ -3,20 +3,26 @@ CyberBot Guide
 This ReadMe will guide you on how to use this chatbot easily I doubt instructions are needed to show how the buttons work for similar functions
 since if it has buttons it is easy to use and gives a great user experience compared to these required commands anyway this is how it works: 
 
-1. Getting Started
+1.Getting Started
 
-Upon launching the CyberBot application, the `MainWindow` initializes and performs the following:
-Greeting:Plays a greeting audio and displays an ASCII art header.
-Name Prompt:Immediately asks for your name.
+The ‘MainWindow’ is the first thing that gets booted up and it does the following when the CyberBot application starts:
+
+ GreetingPlays an audio greeting and prints an ASCII art header.
+
+Name Prompt:Demands your name right away.
+
 To begin interaction:
-Type your name into the input box and press Enter or click the "Send" button.
 
-2. Core Chatbot Interaction**
+Put your name in the input box below and hit Enter or click on "Send."
 
-After providing your name, the chatbot will welcome you and provide a list of initial capabilities.
+Core Chatbot Interaction
+
+Once you have given a name, the chatbot will reply with a greeting and a selection of initial features.
+
 2.1. Asking About Cybersecurity Topics
-You can ask CyberBot about various cybersecurity topics. The chatbot has predefined responses for common terms.
-Supported Topics:**
+
+You may inquire to CyberBot for certain topics The chatbot has predefined responses for common terms.
+Supported Topics:
        `phishing`
       `strong passwords`
        `malware`
@@ -25,55 +31,56 @@ Supported Topics:**
 How to Ask: Simply type the topic name (e.g., `phishing`) into the input box and send.
 Fuzzy Matching: If you misspell a topic, CyberBot might suggest a correction (e.g., typing `phising` might prompt "Did you mean 'phishing'?").
 
-2.2. General Queries & Support
-Help: Type `help` to get a list of supported topics.
-Emotional Support: If you express concern (e.g., `I'm worried about scams`, `I'm scared`), CyberBot will offer reassurance and share general cybersecurity tips.
-Expressing Interest: You can tell CyberBot your interests (e.g., `I'm interested in privacy`). The bot will remember this and might tailor future tips.
-More Information: If CyberBot provides a short answer, you can often type `tell me more` or `more about [topic]` to get additional details.
-Casual Conversation: Try `how are you` or `what's your purpose`.
+2.2. Support & General Inquiries
+ Help: To obtain a list of supported topics, type `help`.
+ Emotional Support: CyberBot will provide comfort and basic cybersecurity advice if you voice concerns (e.g., `I'm worried about scams`, `I'm scared`).
 
-3. Interactive Features
+ Expressing Interest: You can use phrases like "I'm interested in privacy" to let CyberBot know what interests you.  The bot will keep this in mind and may modify its recommendations in the future.
+ More facts: You can frequently write `tell me more` or `more about [topic]` to obtain more facts if CyberBot just gives a brief response.
+ Try asking "how are you" or "what's your purpose" in a casual conversation.
 
-The `MainWindow` class integrates several interactive features accessible via specific commands.
-3.1. Cybersecurity Quiz
+ 3. Interactive Elements
 
-Test your knowledge with a quick cybersecurity quiz.
-Start Quiz: Type `start quiz` or `quiz`.
-Answering Questions:** For each question, type the number corresponding to your chosen option (e.g., `1`, `2`, `3`).
-Quiz Flow: CyberBot will provide immediate feedback (correct/incorrect) and an explanation after each answer, then move to the next question. The quiz ends when all questions are answered, and your score is displayed.
+ A number of interactive elements that can be accessed with particular commands are integrated into the `MainWindow` class.
+ 3.1. Test of Cybersecurity
 
-3.2. Task Management & Reminders
-You can add cybersecurity-related tasks and set reminders for them.
+Take a brief cybersecurity quiz to see how much you know.
+ Launch the quiz:  Enter `quiz` or `start quiz`.
+ Answering Questions: Enter the number that corresponds to the choice you selected for each question (e.g., `1`, `2`, `3`).
 
-    Adding a Task:
-      Type `add task to [your task description]` (e.g., `add task to change my email password`).
-      CyberBot will confirm the task addition and ask if you want to set a reminder.
-      Setting a Reminder (after adding a task):
-      If prompted, respond with `yes, remind me in X days` (e.g., `yes, remind me in 7 days`).
-      Alternatively, you can set a reminder directly using a specific date: `yes, remind me on YYYY-MM-DD` (e.g., `yes, remind me on 2024-12-31`).
-      If you don't want a reminder, respond with `no`.
-      Setting a Reminder (standalone):
-      You can also set a reminder without first adding a task by typing `remind me in X days` or `remind me on YYYY-MM-DD`.
-3.3. Activity Log
+ Quiz Flow: Following each response, CyberBot will instantly provide feedback (right or incorrect) and an explanation before moving on to the next question.  After you have responded to every question and seen your score, the quiz is over.
 
-Review your past interactions with CyberBot.
-View Log: Type `show activity log` or `what have you done for me`.
-The log will display a timestamped list of actions and messages.
+ 3.2. Reminders & Task Management
+ Tasks linked to cybersecurity can be added, and reminders can be made.
 
-4. Exiting the Application
+Enter `add task to [your task description]` to add a task (for example, `add task to update my email password`).
+       After verifying the task addition, CyberBot will you whether you would like to create a reminder.
 
-Exit Command: Type `exit` to gracefully end your session with CyberBot.
-Exit Summary: Before closing, CyberBot will provide a summary of topics discussed and any interests you've expressed, along with external resources for further learning.
+       After adding a task, set a reminder by saying, "Yes, remind me in X days" (for example, "yes, remind me in 7 days") when asked.
+       An alternative is to use a specific date to establish a reminder directly: `yes, remind me on YYYY-MM-DD` (for example, `yes, remind me on 2024-12-31`).
+       Use `no` to indicate that you do not want a reminder.
+       Creating a Standalone Reminder:
+       You can also type `remind me in X days` or `remind me on YYYY-MM-DD` to set a reminder without first adding a task.
+ 3.3. Log of Activities
 
-5. Navigation (UI Buttons)
+Examine your previous exchanges with CyberBot.
+ Examine the log:  Enter `what have you done for me` or `show activity log`.
+ A timestamped list of messages and actions will be shown in the log.
 
-The `MainWindow` also features navigation buttons that lead to dedicated pages for certain functionalities:
 
-GoToLog: Navigates to the `ActivityLogPage` to view past interactions.
-GoToTask: Navigates to the `TaskAssistantPage` for managing tasks and reminders through a dedicated UI.
-GoToTips: Navigates to the `CyberTipsPage` to view general cybersecurity tips.
-GoToQuiz: Navigates to the `QuizPage` to start the cybersecurity quiz via a dedicated UI.
-GoToMainChat: Returns to the main chat interface from any navigated page.
+ 4. Closing the Program
 
+ Exit Command: Enter `exit` to finish your CyberBot session politely.
+ Exit Summary: Prior to closing, CyberBot will give you a rundown of the subjects covered and any interests you mentioned, as well as links to other resources for additional education.
+
+ 5. UI Buttons for Navigation
+
+ Additionally, the `MainWindow` has navigation buttons that take users to specific sites for specific features:
+GoToLog: To observe previous interactions, navigate to the `ActivityLogPage`.
+ GoToTask: Opens the `TaskAssistantPage`, which has a specialized user interface for handling tasks and reminders.
+ GoToTips: Views general cybersecurity advice by navigating to the `CyberTipsPage`.
+ Demonstration Youtube video:https://www.youtube.com/watch?v=dBq151yt_rA
+
+ GoToQuiz: Opens the cybersecurity test through a specialized user interface by navigating to the `QuizPage`.
+ GoToMainChat: From any browsed page, this function takes you back to the main chat interface.
 By following these instructions, you can easily use this chatbot named CyberBot
-Demonstration video:https://youtu.be/dBq151yt_rA
