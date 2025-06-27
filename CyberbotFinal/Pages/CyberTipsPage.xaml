@@ -7,18 +7,59 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CyberTipsPage">
+    <!--
+    This is the root element of a WPF Page.
+    x:Class: Specifies the code-behind class for this XAML file (CyberbotFinal.Pages.CyberTipsPage).
+    xmlns: Defines the default XML namespace for WPF elements.
+    xmlns:x: Defines the XML namespace for XAML language features (e.g., x:Name).
+    xmlns:mc: Defines the XML namespace for markup compatibility.
+    xmlns:d: Defines the XML namespace for design-time attributes.
+    xmlns:local: Maps a CLR namespace (CyberbotFinal.Pages) to an XML namespace, allowing custom controls/classes from the project to be used.
+    mc:Ignorable="d": Tells XAML parser to ignore elements/attributes from the 'd' namespace at runtime.
+    d:DesignHeight="450": Sets the design-time height for the page in the designer.
+    d:DesignWidth="800": Sets the design-time width for the page in the designer.
+    Title="CyberTipsPage": Sets the title of the page.
+    -->
 
     <Grid Background="MidnightBlue">
+        <!--
+        Grid: The main layout panel for this page.
+        Background="MidnightBlue": Sets the background color of the Grid to MidnightBlue.
+        -->
         <StackPanel Margin="20">
+            <!--
+            StackPanel: Arranges its child elements in a single line, either horizontally or vertically.
+            Margin="20": Sets a 20-pixel margin around the StackPanel, providing spacing from the Grid's edges.
+            By default, Orientation is Vertical for StackPanel.
+            -->
             <TextBlock Text="Top Cybersecurity Tips" FontSize="24" Foreground="White" Margin="0,0,0,20"/>
+            <!--
+            TextBlock: Displays the title of the tips section.
+            Text="Top Cybersecurity Tips": The content of the TextBlock.
+            FontSize="24": Sets the font size to 24 points.
+            Foreground="White": Sets the text color to white.
+            Margin="0,0,0,20": Sets a 20-pixel bottom margin, creating space below the title.
+            -->
             <ListBox Foreground="Black" FontSize="14">
+                <!--
+                ListBox: Displays a list of cybersecurity tips.
+                Foreground="Black": Sets the text color of the items in the ListBox to black.
+                FontSize="14": Sets the font size for the items to 14 points.
+                -->
                 <ListBoxItem>1. Use strong, unique passwords.</ListBoxItem>
+                <!-- List item for the first tip. -->
                 <ListBoxItem>2. Enable two-factor authentication.</ListBoxItem>
+                <!-- List item for the second tip. -->
                 <ListBoxItem>3. Don't click on suspicious links.</ListBoxItem>
+                <!-- List item for the third tip. -->
                 <ListBoxItem>4. Regularly update your software.</ListBoxItem>
+                <!-- List item for the fourth tip. -->
                 <ListBoxItem>5. Backup your data frequently.</ListBoxItem>
+                <!-- List item for the fifth tip. -->
                 <ListBoxItem>6. Be wary of phishing emails.</ListBoxItem>
+                <!-- List item for the sixth tip. -->
                 <ListBoxItem>7. Install antivirus and keep it updated.</ListBoxItem>
+                <!-- List item for the seventh tip. -->
             </ListBox>
         </StackPanel>
     </Grid>

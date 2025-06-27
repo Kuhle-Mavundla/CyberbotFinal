@@ -7,25 +7,117 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TaskAssistantPage">
+    <!--
+    This is the root element of a WPF Page.
+    x:Class: Specifies the code-behind class for this XAML file (CyberbotFinal.Pages.TaskAssistantPage).
+    xmlns: Defines the default XML namespace for WPF elements.
+    xmlns:x: Defines the XML namespace for XAML language features (e.g., x:Name).
+    xmlns:mc: Defines the XML namespace for markup compatibility.
+    xmlns:d: Defines the XML namespace for design-time attributes.
+    xmlns:local: Maps a CLR namespace (CyberbotFinal.Pages) to an XML namespace, allowing custom controls/classes from the project to be used.
+    mc:Ignorable="d": Tells XAML parser to ignore elements/attributes from the 'd' namespace at runtime.
+    d:DesignHeight="450": Sets the design-time height for the page in the designer.
+    d:DesignWidth="800": Sets the design-time width for the page in the designer.
+    Title="TaskAssistantPage": Sets the title of the page.
+    -->
 
-        <Grid Background="DarkSlateGray">
-            <StackPanel Margin="20">
-                <TextBlock Text="Cybersecurity Task Reminders" FontSize="24" Foreground="White" Margin="0,0,0,20"/>
+    <Grid Background="DarkSlateGray">
+        <!--
+            Grid: The main layout panel for this page.
+            Background="DarkSlateGray": Sets the background color of the Grid to DarkSlateGray.
+            -->
+        <StackPanel Margin="20">
+            <!--
+                StackPanel: Arranges its child elements in a single line, either horizontally or vertically.
+                Margin="20": Sets a 20-pixel margin around the StackPanel, providing spacing from the Grid's edges.
+                By default, Orientation is Vertical for StackPanel.
+                -->
+            <TextBlock Text="Cybersecurity Task Reminders" FontSize="24" Foreground="White" Margin="0,0,0,20"/>
+            <!--
+                TextBlock: Displays static text.
+                Text="Cybersecurity Task Reminders": The content of the TextBlock.
+                FontSize="24": Sets the font size to 24 points.
+                Foreground="White": Sets the text color to white.
+                Margin="0,0,0,20": Sets a 20-pixel bottom margin, creating space below the title.
+                -->
 
-                <TextBox x:Name="ReminderInput" Height="30" Width="400" Margin="0,0,0,10" Text="Enter your task..." />
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <TextBlock Text="Reminder Time:" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                    <DatePicker x:Name="DatePicker" Width="120" />
-                    <TextBox x:Name="TimeInput" Width="80" Height="25" Margin="10,0,0,0" Text="14:30"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <Button Content="Add Reminder" Width="120" Click="AddReminder_Click" Margin="0,0,10,0"/>
-                    <Button Content="Update Reminder" Width="120" Click="UpdateReminder_Click" Margin="0,0,10,0"/>
-                    <Button Content="Delete Reminder" Width="120" Click="DeleteReminder_Click"/>
-                </StackPanel>
-
-                <ListBox x:Name="ReminderList" Height="200" SelectionChanged="ReminderList_SelectionChanged"/>
+            <TextBox x:Name="ReminderInput" Height="30" Width="400" Margin="0,0,0,10" Text="Enter your task..." />
+            <!--
+                TextBox: Allows users to input text.
+                x:Name="ReminderInput": Assigns a unique name to this TextBox, allowing it to be referenced in code-behind.
+                Height="30": Sets the height of the TextBox to 30 pixels.
+                Width="400": Sets the width of the TextBox to 400 pixels.
+                Margin="0,0,0,10": Sets a 10-pixel bottom margin.
+                Text="Enter your task...": Sets initial placeholder text.
+                -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <!--
+                    StackPanel: Arranges its children horizontally.
+                    Orientation="Horizontal": Specifies horizontal arrangement.
+                    Margin="0,0,0,10": Sets a 10-pixel bottom margin.
+                    -->
+                <TextBlock Text="Reminder Time:" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <!--
+                    TextBlock: Displays "Reminder Time:".
+                    Foreground="White": Sets text color to white.
+                    VerticalAlignment="Center": Vertically centers the text within its allocated space.
+                    Margin="0,0,10,0": Sets a 10-pixel right margin.
+                    -->
+                <DatePicker x:Name="DatePicker" Width="120" />
+                <!--
+                    DatePicker: A control that allows users to select a date.
+                    x:Name="DatePicker": Assigns a unique name for code-behind reference.
+                    Width="120": Sets the width of the DatePicker.
+                    -->
+                <TextBox x:Name="TimeInput" Width="80" Height="25" Margin="10,0,0,0" Text="14:30"/>
+                <!--
+                    TextBox: For entering the time part of the reminder.
+                    x:Name="TimeInput": Assigns a unique name for code-behind reference.
+                    Width="80": Sets the width.
+                    Height="25": Sets the height.
+                    Margin="10,0,0,0": Sets a 10-pixel left margin.
+                    Text="14:30": Sets initial placeholder text for time.
+                    -->
             </StackPanel>
-        </Grid>
-    </Page>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <!--
+                    StackPanel: Arranges the reminder action buttons horizontally.
+                    Orientation="Horizontal": Specifies horizontal arrangement.
+                    Margin="0,0,0,10": Sets a 10-pixel bottom margin.
+                    -->
+                <Button Content="Add Reminder" Width="120" Click="AddReminder_Click" Margin="0,0,10,0"/>
+                <!--
+                    Button: "Add Reminder" button.
+                    Content="Add Reminder": Text displayed on the button.
+                    Width="120": Sets the width.
+                    Click="AddReminder_Click": Specifies the event handler method in code-behind for click events.
+                    Margin="0,0,10,0": Sets a 10-pixel right margin.
+                    -->
+                <Button Content="Update Reminder" Width="120" Click="UpdateReminder_Click" Margin="0,0,10,0"/>
+                <!--
+                    Button: "Update Reminder" button.
+                    Content="Update Reminder": Text displayed on the button.
+                    Width="120": Sets the width.
+                    Click="UpdateReminder_Click": Specifies the event handler method in code-behind.
+                    Margin="0,0,10,0": Sets a 10-pixel right margin.
+                    -->
+                <Button Content="Delete Reminder" Width="120" Click="DeleteReminder_Click"/>
+                <!--
+                    Button: "Delete Reminder" button.
+                    Content="Delete Reminder": Text displayed on the button.
+                    Width="120": Sets the width.
+                    Click="DeleteReminder_Click": Specifies the event handler method in code-behind.
+                    -->
+            </StackPanel>
+
+            <ListBox x:Name="ReminderList" Height="200" SelectionChanged="ReminderList_SelectionChanged"/>
+            <!--
+                ListBox: Displays a list of reminders.
+                x:Name="ReminderList": Assigns a unique name for code-behind reference.
+                Height="200": Sets the height of the ListBox to 200 pixels.
+                SelectionChanged="ReminderList_SelectionChanged": Specifies the event handler method to be called when the selected item in the ListBox changes.
+                -->
+        </StackPanel>
+    </Grid>
+</Page>

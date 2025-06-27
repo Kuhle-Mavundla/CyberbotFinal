@@ -5,38 +5,223 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CyberbotFinal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Background="Black" Margin="10">
+        Title="CyberBot" Height="600" Width="950"
+        WindowStartupLocation="CenterScreen">
+    <!--
+    This is the root element of the WPF window.
+    x:Class: Specifies the code-behind class for this XAML file (CyberbotFinal.MainWindow).
+    xmlns: Defines the default XML namespace for WPF elements.
+    xmlns:x: Defines the XML namespace for XAML language features (e.g., x:Name).
+    xmlns:d: Defines the XML namespace for design-time attributes (ignored at runtime).
+    xmlns:mc: Defines the XML namespace for markup compatibility (used with mc:Ignorable).
+    xmlns:local: Maps a CLR namespace (CyberbotFinal) to an XML namespace, allowing custom controls/classes from the project to be used.
+    mc:Ignorable="d": Tells XAML parser to ignore elements/attributes from the 'd' namespace at runtime.
+    Title: Sets the title of the window to "CyberBot".
+    Height: Sets the height of the window to 600 pixels.
+    Width: Sets the width of the window to 950 pixels.
+    WindowStartupLocation: Specifies where the window appears when it's first opened (CenterScreen means it will be centered on the screen).
+    -->
+
+    <Grid>
+        <!--
+        The Grid is a layout panel that arranges its children in rows and columns.
+        It's the main container for all other UI elements in this window.
+        -->
+        <Grid.Background>
+            <!-- Defines the background of the main Grid. -->
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <!--
+                A LinearGradientBrush creates a gradient fill.
+                StartPoint="0,0": Gradient starts at the top-left corner.
+                EndPoint="0,1": Gradient ends at the bottom-left corner (vertical gradient).
+                -->
+                <GradientStop Color="#0D1B2A" Offset="0.0" />
+                <!-- First color stop: dark blue at the top. -->
+                <GradientStop Color="#1B263B" Offset="1.0" />
+                <!-- Second color stop: slightly lighter blue at the bottom. -->
+            </LinearGradientBrush>
+        </Grid.Background>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <!-- Defines the row structure for the main Grid. -->
             <RowDefinition Height="Auto"/>
+            <!-- Header row: Height adjusts to its content. -->
+            <!-- Header -->
+            <RowDefinition Height="*"/>
+            <!-- Content row: Takes up all available space. -->
+            <!-- Content -->
+            <RowDefinition Height="Auto"/>
+            <!-- Input row: Height adjusts to its content. -->
+            <!-- Input -->
         </Grid.RowDefinitions>
 
-        <ListBox x:Name="ChatBox" Grid.Row="0" Background="Black" Foreground="Lime" FontFamily="Consolas" FontSize="14"/>
+        <!-- ASCII Header -->
+        <TextBlock x:Name="AsciiHeader"
+                   Grid.Row="0"
+                   FontFamily="Consolas"
+                   FontSize="14"
+                   Foreground="Lime"
+                   Margin="10"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap">
+            <!--
+            TextBlock: A control for displaying text.
+            x:Name="AsciiHeader": Assigns a unique name to this TextBlock, allowing it to be referenced in code-behind.
+            Grid.Row="0": Places this TextBlock in the first row (index 0) of the parent Grid.
+            FontFamily="Consolas": Sets the font to Consolas, a monospaced font suitable for ASCII art.
+            FontSize="14": Sets the font size to 14 points.
+            Foreground="Lime": Sets the text color to lime green.
+            Margin="10": Sets a 10-pixel margin around the TextBlock.
+            TextAlignment="Center": Centers the text horizontally within the TextBlock.
+            TextWrapping="Wrap": Allows the text to wrap to the next line if it exceeds the available width.
+            -->
+            <TextBlock.Text>
+                <!-- Defines the content of the TextBlock. -->
+                <![CDATA[
+   ______     __  __ _____     _____     ______      _____    _____    _________
+  /\  ___\   /\ \/ / \ == \   /\  ___\  /\  == \     \ == \  /     \  /\__    __\
+  \ \ \____  \ \  /   \  /___ \ \  ___\ \ \  __<      \   /__\      \ \/__\   \_/
+   \ \_____\  \ \_\    \  == \ \ \_____\ \ \_\ \_\     \  == \\      \     \   \
+    \/_____/   \/_/     \____/  \/_____/  \/_/ /_/      \____/ \_____/      \___\
+                ]]>
+                <!-- CDATA section: Contains the raw ASCII art text. This prevents XML parser from interpreting characters like < or & within the text. -->
+            </TextBlock.Text>
+        </TextBlock>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,10,0,0">
-            <TextBox x:Name="UserInput" Width="500" Height="30" FontSize="14" />
-            <Button Content="Send" Width="100" Height="30" Margin="10,0,0,0" Click="SendButton_Click"/>
+        <!-- Main content area -->
+        <Grid Grid.Row="1" Margin="10">
+            <!--
+            Grid: Another Grid control, nested within the main Grid, placed in the second row (index 1).
+            Grid.Row="1": Places this Grid in the second row of its parent Grid.
+            Margin="10": Sets a 10-pixel margin around this Grid.
+            -->
+            <Grid.ColumnDefinitions>
+                <!-- Defines the column structure for this nested Grid. -->
+                <ColumnDefinition Width="2*"/>
+                <!-- First column: Takes 2 parts of the available width. -->
+                <ColumnDefinition Width="3*"/>
+                <!-- Second column: Takes 3 parts of the available width (making it wider than the first). -->
+            </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-                <Button Content="Main Chat" Click="GoToMainChat_Click" Margin="5"/>
-                <Button Content="Task Assistant" Click="GoToTask_Click" Margin="5"/>
-                <Button Content="Cyber Tips" Click="GoToTips_Click" Margin="5"/>
-                <Button Content="Quiz" Click="GoToQuiz_Click" Margin="5"/>
+            <!-- Chat -->
+            <ListBox x:Name="ChatBox"
+                     Grid.Column="0"
+                     Background="Black"
+                     Foreground="Lime"
+                     FontFamily="Consolas"
+                     FontSize="14"
+                     Margin="5"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            <!--
+            ListBox: A control that displays a list of items.
+            x:Name="ChatBox": Assigns a unique name, allowing it to be referenced in code-behind.
+            Grid.Column="0": Places this ListBox in the first column (index 0) of its parent Grid.
+            Background="Black": Sets the background color to black.
+            Foreground="Lime": Sets the text color to lime green.
+            FontFamily="Consolas": Sets the font to Consolas.
+            FontSize="14": Sets the font size to 14 points.
+            Margin="5": Sets a 5-pixel margin around the ListBox.
+            ScrollViewer.VerticalScrollBarVisibility="Auto": A vertical scrollbar appears automatically if content overflows.
+            -->
+
+            <!-- Pages -->
+            <Frame x:Name="MainFrame"
+                   Grid.Column="1"
+                   Margin="5"
+                   NavigationUIVisibility="Hidden"
+                   Background="#112"
+                   BorderBrush="Gray"
+                   BorderThickness="1"/>
+            <!--
+            Frame: A control that can host page content, allowing navigation between different UI pages.
+            x:Name="MainFrame": Assigns a unique name, allowing it to be referenced in code-behind.
+            Grid.Column="1": Places this Frame in the second column (index 1) of its parent Grid.
+            Margin="5": Sets a 5-pixel margin around the Frame.
+            NavigationUIVisibility="Hidden": Hides the default navigation UI (like back/forward buttons) of the Frame.
+            Background="#112": Sets the background color using a hexadecimal RGB value.
+            BorderBrush="Gray": Sets the color of the border to gray.
+            BorderThickness="1": Sets the thickness of the border to 1 pixel on all sides.
+            -->
+        </Grid>
+
+        <!-- Input + Navigation -->
+        <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10">
+            <!--
+            StackPanel: A layout panel that arranges its children in a single line (either horizontally or vertically).
+            Grid.Row="2": Places this StackPanel in the third row (index 2) of the main Grid.
+            Orientation="Vertical": Arranges its children vertically.
+            Margin="10": Sets a 10-pixel margin around the StackPanel.
+            -->
+            <StackPanel Orientation="Horizontal">
+                <!--
+                StackPanel: Nested StackPanel to arrange the TextBox and Send Button horizontally.
+                Orientation="Horizontal": Arranges its children horizontally.
+                -->
+                <TextBox x:Name="UserInput"
+                         Width="500"
+                         Height="30"
+                         FontSize="14"
+                         Margin="0,0,10,0"/>
+                <!--
+                TextBox: A control for user input.
+                x:Name="UserInput": Assigns a unique name, allowing it to be referenced in code-behind.
+                Width="500": Sets the width of the TextBox to 500 pixels.
+                Height="30": Sets the height of the TextBox to 30 pixels.
+                FontSize="14": Sets the font size to 14 points.
+                Margin="0,0,10,0": Sets a 10-pixel right margin (top, left, bottom, right).
+                -->
+
+                <Button Content="Send"
+                        Width="100"
+                        Height="30"
+                        Click="SendButton_Click"
+                        Background="#38B000"
+                        Foreground="White"
+                        FontWeight="Bold"/>
+                <!--
+                Button: A clickable control.
+                Content="Send": Sets the text displayed on the button.
+                Width="100": Sets the width of the button to 100 pixels.
+                Height="30": Sets the height of the button to 30 pixels.
+                Click="SendButton_Click": Specifies the event handler method in code-behind to be called when the button is clicked.
+                Background="#38B000": Sets the background color using a hexadecimal RGB value (a shade of green).
+                Foreground="White": Sets the text color to white.
+                FontWeight="Bold": Makes the text bold.
+                -->
             </StackPanel>
 
-            <!-- Page Display Area -->
-            <Frame x:Name="MainFrame" Margin="10,50,10,10" NavigationUIVisibility="Hidden"/>
-            <TextBlock x:Name="AsciiHeader"
-           TextWrapping="Wrap"
-           FontFamily="Consolas"
-           FontSize="14"
-           Foreground="Lime"
-           Margin="10"
-           VerticalAlignment="Top"
-           HorizontalAlignment="Center"
-           TextAlignment="Center" />
-
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <!--
+                StackPanel: Another nested StackPanel for navigation buttons.
+                Orientation="Horizontal": Arranges its children horizontally.
+                HorizontalAlignment="Center": Centers this StackPanel horizontally within its parent.
+                Margin="0,10,0,0": Sets a 10-pixel top margin.
+                -->
+                <Button Content="Main Chat" Click="GoToMainChat_Click" Margin="5"
+                        Padding="10,5" Background="#006D77" Foreground="White"/>
+                <!-- Navigation button for Main Chat. -->
+                <Button Content="Task Assistant" Click="GoToTask_Click" Margin="5"
+                        Padding="10,5" Background="#0077B6" Foreground="White"/>
+                <!-- Navigation button for Task Assistant. -->
+                <Button Content="Cyber Tips" Click="GoToTips_Click" Margin="5"
+                        Padding="10,5" Background="#9A031E" Foreground="White"/>
+                <!-- Navigation button for Cyber Tips. -->
+                <Button Content="Quiz" Click="GoToQuiz_Click" Margin="5"
+                        Padding="10,5" Background="#F77F00" Foreground="Black"/>
+                <!-- Navigation button for Quiz. -->
+                <Button Content="Activity Log" Click="GoToLog_Click" Margin="5"
+                        Padding="10,5" Background="#6A4C93" Foreground="White"/>
+                <!-- Navigation button for Activity Log. -->
+                <!--
+                Common Button Properties:
+                Content: Text displayed on the button.
+                Click: Event handler method in code-behind.
+                Margin: Spacing around the button.
+                Padding: Inner spacing between content and button edge.
+                Background: Button's background color.
+                Foreground: Button's text color.
+                -->
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
